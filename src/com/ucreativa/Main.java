@@ -10,6 +10,7 @@ public class Main {
 		System.out.println("Edad: " + edad);
 	    papa.setCumple();
 		edad = papa.getAge();
+		System.out.println("I love " + papa.getHobby());
 	    System.out.println("Bye Class: " + edad);
     }
 }
