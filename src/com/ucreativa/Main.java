@@ -1,8 +1,15 @@
 package com.ucreativa;
 
+import com.ucreativa.familia.Francisco;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    Francisco papa = new Francisco("hola");
+		int edad = papa.getAge();
+		System.out.println("Edad: " + edad);
+	    papa.setCumple();
+		edad = papa.getAge();
+	    System.out.println("Bye Class: " + edad);
     }
 }
