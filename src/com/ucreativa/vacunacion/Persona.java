@@ -5,12 +5,14 @@ public class Persona {
     private String cedula;
     private int edad;
     private boolean riesgo;
+    private boolean vacunado;
 
     public Persona(String nombre, String cedula, int edad, boolean riesgo){
         this.nombre = nombre;
         this.cedula = cedula;
         this.edad = edad;
         this.riesgo = riesgo;
+        this.vacunado = false;
     }
 
     public String getNombre(){
@@ -30,5 +32,11 @@ public class Persona {
     }
     public void setRiesto(boolean riesgo){
         this.riesgo = riesgo;
+    }
+    public void setVacunado(boolean vacunado){
+        this.vacunado = vacunado;
+    }
+    public void vacunar(){
+        this.vacunado = true;
     }
 }
