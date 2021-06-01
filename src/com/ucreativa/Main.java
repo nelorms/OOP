@@ -1,9 +1,14 @@
 package com.ucreativa;
 
 import com.ucreativa.familia.Francisco;
-import com.ucreativa.vacunacion.Amigo;
-import com.ucreativa.vacunacion.Familiar;
-import com.ucreativa.vacunacion.Persona;
+import com.ucreativa.vacunacion.entities.Amigo;
+import com.ucreativa.vacunacion.entities.BitacoraVacunas;
+import com.ucreativa.vacunacion.entities.Familiar;
+import com.ucreativa.vacunacion.entities.Persona;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Main {
 
@@ -17,13 +22,19 @@ public class Main {
 	    System.out.println("Bye Class: " + edad);
 
 
-		Persona francisco = new Persona("Francisco", "1231231213", 50, false);
-		francisco.vacunar();
+		Persona papa = new Persona("Francisco", "1231231213", 50, false);
+		Amigo amigo = new Amigo("Josue", "123123123", 50, false, "amigo", "facebook");
+		Familiar hija = new Familiar("Nela", "1231231", 12, false, "hija");
 
-		Amigo emel = new Amigo("Emel", "123123123", 50, false, "amigo", "facebook");
-		emel.vacunar();
+		List<Persona> listaPersonas = new ArrayList<>();
+		listaPersonas.add(papa);
+		listaPersonas.add(amigo);
+		listaPersonas.add(hija);
 
-		Familiar nela = new Familiar("Nela", "a1231231", 12, false, "hija");
-		nela.vacunar();
+		List<BitacoraVacunas> bitacora = new ArrayList<>();
+		bitacora.add(new BitacoraVacunas(papa, "Pfizer", new Date()));
+		bitacora.add(new BitacoraVacunas(amigo, "astra", new Date()));
+		bitacora.add(new BitacoraVacunas(hija, "Johnson", new Date()));
     }
 }
+
