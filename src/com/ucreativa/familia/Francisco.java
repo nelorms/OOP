@@ -3,11 +3,17 @@ package com.ucreativa.familia;
 public class Francisco {
     private int age;
     private String hobby;
+    private String saludo;
 
     public Francisco (String saludo){
         this.age = 60;
         this.hobby = "Soccer";
         System.out.println(saludo);
+    }
+    public Francisco(String saludo, int age, String hobby){
+        this.age = age;
+        this.saludo = saludo;
+        this.hobby = hobby;
     }
 
     public void setCumple(){
