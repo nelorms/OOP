@@ -1,47 +1,39 @@
 package com.ucreativa.vacunacion.repositories;
 
-import com.sun.source.tree.WhileLoopTree;
 import com.ucreativa.vacunacion.entities.Persona;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileRepository implements Repository{
-    private File file;
-    private FileWriter fileWriter;
 
-    public FileRepository(){
-        this.file = new File ("BaseDeDatos.txt");
-        if (!this.file.exists()) {
-            this.file.createNewFile();
-        }
-    }
-
+    private final String FILE_PATH = "db.txt";
     @Override
-    public void save(Persona persona, String marca, Date fecha) {
-        SimpleDateFormat format  = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-        String escribir = persona.getNombre()
-                + " - " + marca
-                + " - " + format.format(fecha);
-        FileWriter fileWriter = new FileWriter(this.file.getAbsoluteFile());
-        fileWriter.write(escribir);
-        fileWriter.close();
-    }
+    public void save(Persona persona, String marca, Date fecha){
 
-    @Override
-    public List<String> get() {
-        /*
-        FileReader fileReader = new FileReader(this.file);
-        List<String> listaLeida = new ArrayList<>();
-        while (fileReader.read()){
-            listaLeida.add(fileReader.read());
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+        String text = persona.getNombre() + " " + marca + " " + format.format(fecha) + "\n";
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true));
+            writer.append(text);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        */
+
+    }
+    @Override
+    public List<String> get(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
+            return reader.lines().collect(Collectors.toList());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
