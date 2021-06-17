@@ -3,11 +3,16 @@ package com.ucreativa;
 import com.ucreativa.vacunacion.entities.Persona;
 import com.ucreativa.vacunacion.repositories.FileRepository;
 import com.ucreativa.vacunacion.services.BitacoraService;
+import com.ucreativa.vacunacion.ui.FrontEnd;
 
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args){
+
+		FrontEnd ventana = new FrontEnd("Vacunación");
+		ventana.build();
+		/*
 		Scanner in = new Scanner(System.in);
 		BitacoraService service = new BitacoraService(new FileRepository());
 		String nombre, cedula, edad, riesgo, isAmigo, relacion = "", facebook = "", parentesco = "", marca;
@@ -44,7 +49,8 @@ public class Main {
 					System.out.println(item);
 				}
 			}
-		}
+
+		}*/
 	}
 }
 
